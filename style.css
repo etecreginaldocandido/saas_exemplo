@@ -1,5 +1,4 @@
 :root {
-  /* Paleta e medidas centrais da interface. */
   --bg: #f4efe7;
   --bg-accent: #efe4d2;
   --surface: rgba(255, 252, 248, 0.82);
@@ -10,6 +9,7 @@
   --accent: #cc6b2c;
   --accent-strong: #9f4610;
   --danger: #a12727;
+  --success: #155239;
   --shadow: 0 24px 60px rgba(83, 49, 12, 0.12);
   --radius-xl: 28px;
   --radius-lg: 20px;
@@ -44,7 +44,6 @@ textarea {
 }
 
 .hero {
-  /* Organiza o topo em duas áreas: apresentação e status. */
   display: grid;
   grid-template-columns: 1.4fr 0.8fr;
   gap: 24px;
@@ -78,6 +77,8 @@ textarea {
 
 .hero h1,
 .card h2,
+.card h3,
+.card h4,
 .status-panel h2 {
   margin: 0;
   line-height: 1.05;
@@ -93,7 +94,13 @@ textarea {
 .feedback,
 .announcement-message,
 .empty-state,
-.hint-tag {
+.hint-tag,
+.integration-text,
+.integration-loading,
+.teacher-console-text,
+.feature-caption,
+.stat-card dt,
+.movie-overview {
   color: var(--muted);
 }
 
@@ -149,7 +156,7 @@ textarea {
 
 .mode-badge.cloud {
   background: #dff2e5;
-  color: #155239;
+  color: var(--success);
 }
 
 .status-list {
@@ -178,7 +185,6 @@ textarea {
 }
 
 .content-grid {
-  /* Distribui os blocos principais da aplicação em uma grade simples. */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
@@ -189,11 +195,12 @@ textarea {
   padding: 28px;
 }
 
-.card-guide {
+.card-integration {
   grid-column: 1 / -1;
 }
 
-.card-heading {
+.card-heading,
+.teacher-console-header {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -206,7 +213,8 @@ textarea {
   gap: 16px;
 }
 
-.announcement-form label {
+.announcement-form label,
+.toolbar-label {
   display: grid;
   gap: 8px;
   font-size: 0.95rem;
@@ -215,7 +223,8 @@ textarea {
 
 .announcement-form input,
 .announcement-form textarea,
-.announcement-form select {
+.announcement-form select,
+.toolbar-select {
   width: 100%;
   border: 1px solid rgba(71, 53, 33, 0.14);
   border-radius: var(--radius-md);
@@ -226,8 +235,8 @@ textarea {
 
 .announcement-form input:focus,
 .announcement-form textarea:focus,
-.announcement-form select:focus {
-  /* Melhora a percepção de foco para uso em aula e acessibilidade. */
+.announcement-form select:focus,
+.toolbar-select:focus {
   outline: 2px solid rgba(204, 107, 44, 0.28);
   border-color: rgba(204, 107, 44, 0.5);
 }
@@ -238,10 +247,25 @@ textarea {
   gap: 16px;
 }
 
-.form-actions {
+.form-actions,
+.toolbar,
+.teacher-console-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.toolbar {
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.toolbar-label {
+  min-width: 220px;
+}
+
+.toolbar-select {
+  min-width: 240px;
 }
 
 .primary-button,
@@ -277,6 +301,12 @@ textarea {
   border-color: rgba(161, 39, 39, 0.16);
 }
 
+.button-active {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: white;
+  border-color: transparent;
+}
+
 .primary-button:hover,
 .secondary-button:hover,
 .ghost-button:hover {
@@ -294,7 +324,7 @@ textarea {
 }
 
 .feedback.success {
-  color: #155239;
+  color: var(--success);
 }
 
 .announcement-list {
@@ -303,7 +333,6 @@ textarea {
 }
 
 .announcement-item {
-  /* Cada aviso aparece como um cartão independente para facilitar a leitura. */
   background: rgba(255, 250, 243, 0.94);
   border: 1px solid rgba(71, 53, 33, 0.08);
   border-radius: 18px;
@@ -330,6 +359,22 @@ textarea {
   line-height: 1.65;
 }
 
+.teacher-console {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(71, 53, 33, 0.1);
+}
+
+.teacher-console-text,
+.integration-text {
+  margin: 0 0 18px;
+  line-height: 1.7;
+}
+
+.is-hidden {
+  display: none;
+}
+
 .empty-state {
   padding: 28px;
   border-radius: 18px;
@@ -338,16 +383,128 @@ textarea {
   line-height: 1.6;
 }
 
-.guide-list {
+.integration-panel,
+.movies-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.integration-host {
+  width: 100%;
+}
+
+.integration-box,
+.movie-card,
+.feature-visual,
+.feature-details {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 250, 243, 0.94);
+  border: 1px solid rgba(71, 53, 33, 0.08);
+}
+
+.integration-box dt,
+.stat-card dt {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.integration-box dd,
+.stat-card dd {
   margin: 0;
-  padding-left: 22px;
-  line-height: 1.8;
+  font-size: 1.08rem;
+  font-weight: 800;
+}
+
+.feature-panel {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.feature-visual {
+  display: grid;
+  gap: 12px;
+}
+
+.feature-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 18px;
+  background: rgba(71, 53, 33, 0.06);
+}
+
+.feature-caption {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.feature-title {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+}
+
+.feature-summary {
+  margin: 0 0 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.stats-grid {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.stat-card {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 244, 231, 0.78);
+  border: 1px solid rgba(71, 53, 33, 0.08);
+}
+
+.movie-card {
+  display: grid;
+  gap: 12px;
+}
+
+.movie-poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 14px;
+  background: rgba(71, 53, 33, 0.06);
+}
+
+.movie-title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.movie-meta {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.movie-overview {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.94rem;
+}
+
+.integration-loading {
+  margin: 0;
 }
 
 @media (max-width: 980px) {
-  /* Em telas menores, a interface passa a trabalhar em coluna única. */
   .hero,
-  .content-grid {
+  .content-grid,
+  .feature-panel {
     grid-template-columns: 1fr;
   }
 }
@@ -368,7 +525,13 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .card-heading {
+  .card-heading,
+  .teacher-console-header {
     flex-direction: column;
+  }
+
+  .toolbar-label,
+  .toolbar-select {
+    min-width: 100%;
   }
 }

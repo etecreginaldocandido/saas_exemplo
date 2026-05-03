@@ -11,7 +11,6 @@
 </head>
 <body>
   <div class="page-shell">
-    <!-- Bloco de apresentação: mostra a ideia central do SaaS logo no topo. -->
     <header class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Exemplo didático de SaaS</p>
@@ -27,7 +26,6 @@
         </div>
       </div>
 
-      <!-- Painel de status: ajuda a comparar o modo local com o modo em nuvem. -->
       <aside class="status-panel">
         <h2>Status da demonstração</h2>
         <div id="modeBadge" class="mode-badge">Carregando...</div>
@@ -49,14 +47,13 @@
     </header>
 
     <main class="content-grid">
-      <!-- Formulário principal usado pelo professor para publicar novos avisos. -->
       <section class="card card-form">
         <div class="card-heading">
           <div>
-            <p class="section-label">Painel do professor</p>
+            <p class="section-label">Painel do professor: Reginaldo</p>
             <h2>Publicar aviso</h2>
           </div>
-          <span class="hint-tag">PIN padrão: 1234</span>
+          <span class="hint-tag">PIN exemplo: 1974</span>
         </div>
 
         <form id="announcementForm" class="announcement-form">
@@ -83,7 +80,7 @@
 
             <label>
               PIN do professor
-              <input id="pin" name="pin" type="password" inputmode="numeric" placeholder="1234" required>
+              <input id="pin" name="pin" type="password" inputmode="numeric" placeholder="1974" required>
             </label>
           </div>
 
@@ -95,9 +92,31 @@
         </form>
 
         <p id="formFeedback" class="feedback" aria-live="polite"></p>
+
+        <div class="teacher-console">
+          <div class="teacher-console-header">
+            <div>
+              <p class="section-label">Modo apresentação</p>
+              <h3>Controle do professor</h3>
+            </div>
+          </div>
+
+          <p class="teacher-console-text">
+            Com o PIN do professor, você decide quando cada integração aparece para toda a turma.
+            As mudanças de visibilidade são gravadas no Supabase para que os alunos vejam a mesma sequência.
+          </p>
+
+          <div class="teacher-console-actions">
+            <button id="toggleGithubButton" class="secondary-button" type="button">Mostrar GitHub</button>
+            <button id="toggleDogButton" class="secondary-button" type="button">Mostrar cães</button>
+            <button id="togglePokemonButton" class="secondary-button" type="button">Mostrar Pokémon</button>
+            <button id="toggleMoviesButton" class="secondary-button" type="button">Mostrar filmes</button>
+          </div>
+
+          <p id="teacherConsoleFeedback" class="feedback" aria-live="polite"></p>
+        </div>
       </section>
 
-      <!-- Lista pública que representa a experiência do aluno usando o SaaS. -->
       <section class="card card-feed">
         <div class="card-heading">
           <div>
@@ -109,22 +128,101 @@
         <div id="announcementList" class="announcement-list" aria-live="polite"></div>
       </section>
 
-      <!-- Roteiro curto para apoiar a explicação em sala de aula. -->
-      <section class="card card-guide">
+      <section id="githubSection" class="card card-integration is-hidden">
         <div class="card-heading">
           <div>
-            <p class="section-label">Roteiro de aula</p>
-            <h2>Como explicar o SaaS</h2>
+            <p class="section-label">Integração 1</p>
+            <h2>Informações públicas do GitHub</h2>
           </div>
         </div>
 
-        <ol class="guide-list">
-          <li>Abra este sistema em dois navegadores ou dois dispositivos.</li>
-          <li>Publique um aviso no painel do professor.</li>
-          <li>Mostre que o painel do aluno recebe o mesmo dado centralizado.</li>
-          <li>Explique que o usuário consome o software pronto, sem instalar nada.</li>
-          <li>Mostre a diferença entre o modo local e o modo em nuvem.</li>
-        </ol>
+        <p class="integration-text">
+          Este bloco consome dados públicos do GitHub para mostrar que um SaaS pode integrar informações
+          de outro serviço em tempo real.
+        </p>
+
+        <div id="githubIntegration" class="integration-panel" aria-live="polite">
+          <p class="integration-loading">Carregando informações do GitHub...</p>
+        </div>
+      </section>
+
+      <section id="dogSection" class="card card-integration is-hidden">
+        <div class="card-heading">
+          <div>
+            <p class="section-label">Integração 2</p>
+            <h2>Galeria interativa de cães</h2>
+          </div>
+        </div>
+
+        <p class="integration-text">
+          Aqui o sistema consome uma API pública de imagens de cães para mostrar integração divertida e visual.
+        </p>
+
+        <div class="toolbar">
+          <label class="toolbar-label" for="dogBreedSelect">Escolha uma raça</label>
+          <select id="dogBreedSelect" class="toolbar-select">
+            <option value="random">Qualquer raça</option>
+          </select>
+          <button id="dogFetchButton" class="primary-button" type="button">Buscar imagem</button>
+          <button id="dogSurpriseButton" class="ghost-button" type="button">Me surpreenda</button>
+        </div>
+
+        <div id="dogIntegration" class="integration-host" aria-live="polite">
+          <p class="integration-loading">Carregando experiência interativa...</p>
+        </div>
+      </section>
+
+      <section id="pokemonSection" class="card card-integration is-hidden">
+        <div class="card-heading">
+          <div>
+            <p class="section-label">Integração 3</p>
+            <h2>Descoberta de Pokémon</h2>
+          </div>
+        </div>
+
+        <p class="integration-text">
+          Esta integração usa a PokéAPI para mostrar como um SaaS pode consumir catálogos públicos ricos em dados.
+        </p>
+
+        <div class="toolbar">
+          <label class="toolbar-label" for="pokemonSelect">Escolha um Pokémon</label>
+          <select id="pokemonSelect" class="toolbar-select">
+            <option value="pikachu">Pikachu</option>
+          </select>
+          <button id="pokemonFetchButton" class="primary-button" type="button">Buscar Pokémon</button>
+          <button id="pokemonRandomButton" class="ghost-button" type="button">Aleatório</button>
+        </div>
+
+        <div id="pokemonIntegration" class="integration-host" aria-live="polite">
+          <p class="integration-loading">Carregando informações da PokéAPI...</p>
+        </div>
+      </section>
+
+      <section id="moviesSection" class="card card-integration is-hidden">
+        <div class="card-heading">
+          <div>
+            <p class="section-label">Integração 4</p>
+            <h2>Painel de filmes</h2>
+          </div>
+        </div>
+
+        <p class="integration-text">
+          Este bloco usa a API do TMDB para mostrar que integrações com catálogos comerciais normalmente exigem credenciais.
+        </p>
+
+        <div class="toolbar">
+          <label class="toolbar-label" for="movieCategorySelect">Categoria</label>
+          <select id="movieCategorySelect" class="toolbar-select">
+            <option value="trending">Em alta na semana</option>
+            <option value="popular">Populares</option>
+            <option value="top_rated">Mais bem avaliados</option>
+          </select>
+          <button id="movieFetchButton" class="primary-button" type="button">Buscar filmes</button>
+        </div>
+
+        <div id="moviesIntegration" class="movies-grid" aria-live="polite">
+          <p class="integration-loading">Carregando filmes...</p>
+        </div>
       </section>
     </main>
   </div>
