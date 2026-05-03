@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadro SaaS da Turma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <!-- Bloco de apresentação: mostra a ideia central do SaaS logo no topo. -->
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Exemplo didático de SaaS</p>
+        <h1>Quadro de Avisos da Turma</h1>
+        <p class="hero-text">
+          Um mini sistema para demonstrar, em poucos minutos, como um software entregue pela internet
+          pode centralizar dados, funcionar no navegador e ser atualizado para todos ao mesmo tempo.
+        </p>
+        <div class="hero-badges">
+          <span>Acesso via navegador</span>
+          <span>Dados centralizados</span>
+          <span>Sem instalação local</span>
+        </div>
+      </div>
+
+      <!-- Painel de status: ajuda a comparar o modo local com o modo em nuvem. -->
+      <aside class="status-panel">
+        <h2>Status da demonstração</h2>
+        <div id="modeBadge" class="mode-badge">Carregando...</div>
+        <dl class="status-list">
+          <div>
+            <dt>Avisos</dt>
+            <dd id="announcementCount">0</dd>
+          </div>
+          <div>
+            <dt>Última sincronização</dt>
+            <dd id="lastSync">--</dd>
+          </div>
+        </dl>
+        <p id="modeDescription" class="mode-description">
+          Preparando ambiente...
+        </p>
+        <button id="refreshButton" class="secondary-button" type="button">Atualizar painel</button>
+      </aside>
+    </header>
+
+    <main class="content-grid">
+      <!-- Formulário principal usado pelo professor para publicar novos avisos. -->
+      <section class="card card-form">
+        <div class="card-heading">
+          <div>
+            <p class="section-label">Painel do professor</p>
+            <h2>Publicar aviso</h2>
+          </div>
+          <span class="hint-tag">PIN padrão: 1234</span>
+        </div>
+
+        <form id="announcementForm" class="announcement-form">
+          <label>
+            Título
+            <input id="title" name="title" type="text" maxlength="80" placeholder="Ex.: Aula de hoje mudou de sala" required>
+          </label>
+
+          <label>
+            Mensagem
+            <textarea id="message" name="message" rows="5" maxlength="280" placeholder="Escreva um recado curto para a turma." required></textarea>
+          </label>
+
+          <div class="form-row">
+            <label>
+              Público
+              <select id="audience" name="audience">
+                <option>Todos</option>
+                <option>Grupo AWS</option>
+                <option>Grupo Azure</option>
+                <option>Grupo Google Cloud</option>
+              </select>
+            </label>
+
+            <label>
+              PIN do professor
+              <input id="pin" name="pin" type="password" inputmode="numeric" placeholder="1234" required>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit">Publicar aviso</button>
+            <button id="seedButton" class="ghost-button" type="button">Carregar exemplo</button>
+            <button id="clearButton" class="ghost-button danger" type="button">Limpar avisos</button>
+          </div>
+        </form>
+
+        <p id="formFeedback" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <!-- Lista pública que representa a experiência do aluno usando o SaaS. -->
+      <section class="card card-feed">
+        <div class="card-heading">
+          <div>
+            <p class="section-label">Painel do aluno</p>
+            <h2>Avisos publicados</h2>
+          </div>
+        </div>
+
+        <div id="announcementList" class="announcement-list" aria-live="polite"></div>
+      </section>
+
+      <!-- Roteiro curto para apoiar a explicação em sala de aula. -->
+      <section class="card card-guide">
+        <div class="card-heading">
+          <div>
+            <p class="section-label">Roteiro de aula</p>
+            <h2>Como explicar o SaaS</h2>
+          </div>
+        </div>
+
+        <ol class="guide-list">
+          <li>Abra este sistema em dois navegadores ou dois dispositivos.</li>
+          <li>Publique um aviso no painel do professor.</li>
+          <li>Mostre que o painel do aluno recebe o mesmo dado centralizado.</li>
+          <li>Explique que o usuário consome o software pronto, sem instalar nada.</li>
+          <li>Mostre a diferença entre o modo local e o modo em nuvem.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

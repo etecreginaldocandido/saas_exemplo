@@ -1,0 +1,374 @@
+:root {
+  /* Paleta e medidas centrais da interface. */
+  --bg: #f4efe7;
+  --bg-accent: #efe4d2;
+  --surface: rgba(255, 252, 248, 0.82);
+  --surface-strong: #fffaf3;
+  --line: rgba(71, 53, 33, 0.12);
+  --text: #2f2417;
+  --muted: #6d5a46;
+  --accent: #cc6b2c;
+  --accent-strong: #9f4610;
+  --danger: #a12727;
+  --shadow: 0 24px 60px rgba(83, 49, 12, 0.12);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 28%),
+    linear-gradient(135deg, var(--bg) 0%, var(--bg-accent) 100%);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0 56px;
+}
+
+.hero {
+  /* Organiza o topo em duas áreas: apresentação e status. */
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+.hero-copy,
+.status-panel,
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero-copy {
+  padding: 36px;
+  border-radius: var(--radius-xl);
+}
+
+.eyebrow,
+.section-label {
+  margin: 0 0 12px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.hero h1,
+.card h2,
+.status-panel h2 {
+  margin: 0;
+  line-height: 1.05;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  max-width: 10ch;
+}
+
+.hero-text,
+.mode-description,
+.feedback,
+.announcement-message,
+.empty-state,
+.hint-tag {
+  color: var(--muted);
+}
+
+.hero-text {
+  max-width: 60ch;
+  margin: 18px 0 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.hero-badges span,
+.hint-tag,
+.mode-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.hero-badges span,
+.hint-tag {
+  border: 1px solid rgba(204, 107, 44, 0.18);
+  background: rgba(255, 244, 231, 0.9);
+}
+
+.status-panel {
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.status-panel h2 {
+  font-size: 1.45rem;
+}
+
+.mode-badge {
+  width: fit-content;
+  margin: 18px 0;
+  background: #f1e4c8;
+  color: #7c4a10;
+}
+
+.mode-badge.cloud {
+  background: #dff2e5;
+  color: #155239;
+}
+
+.status-list {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.status-list div {
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 250, 243, 0.92);
+  border: 1px solid rgba(71, 53, 33, 0.08);
+}
+
+.status-list dt {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.status-list dd {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.content-grid {
+  /* Distribui os blocos principais da aplicação em uma grade simples. */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.card {
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.card-guide {
+  grid-column: 1 / -1;
+}
+
+.card-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 22px;
+}
+
+.announcement-form {
+  display: grid;
+  gap: 16px;
+}
+
+.announcement-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.announcement-form input,
+.announcement-form textarea,
+.announcement-form select {
+  width: 100%;
+  border: 1px solid rgba(71, 53, 33, 0.14);
+  border-radius: var(--radius-md);
+  background: var(--surface-strong);
+  padding: 14px 16px;
+  color: var(--text);
+}
+
+.announcement-form input:focus,
+.announcement-form textarea:focus,
+.announcement-form select:focus {
+  /* Melhora a percepção de foco para uso em aula e acessibilidade. */
+  outline: 2px solid rgba(204, 107, 44, 0.28);
+  border-color: rgba(204, 107, 44, 0.5);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.primary-button,
+.secondary-button,
+.ghost-button {
+  border: none;
+  border-radius: 999px;
+  padding: 13px 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.18s ease, opacity 0.18s ease, background-color 0.18s ease;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: white;
+}
+
+.secondary-button {
+  background: rgba(255, 245, 231, 0.96);
+  color: var(--text);
+  border: 1px solid rgba(71, 53, 33, 0.1);
+}
+
+.ghost-button {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(71, 53, 33, 0.12);
+}
+
+.ghost-button.danger {
+  color: var(--danger);
+  border-color: rgba(161, 39, 39, 0.16);
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.ghost-button:hover {
+  transform: translateY(-1px);
+}
+
+.feedback {
+  min-height: 24px;
+  margin: 18px 0 0;
+  font-size: 0.94rem;
+}
+
+.feedback.error {
+  color: var(--danger);
+}
+
+.feedback.success {
+  color: #155239;
+}
+
+.announcement-list {
+  display: grid;
+  gap: 16px;
+}
+
+.announcement-item {
+  /* Cada aviso aparece como um cartão independente para facilitar a leitura. */
+  background: rgba(255, 250, 243, 0.94);
+  border: 1px solid rgba(71, 53, 33, 0.08);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.announcement-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.announcement-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.announcement-message {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.empty-state {
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px dashed rgba(71, 53, 33, 0.18);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.guide-list {
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.8;
+}
+
+@media (max-width: 980px) {
+  /* Em telas menores, a interface passa a trabalhar em coluna única. */
+  .hero,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 20px;
+  }
+
+  .hero-copy,
+  .status-panel,
+  .card {
+    padding: 22px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .card-heading {
+    flex-direction: column;
+  }
+}
