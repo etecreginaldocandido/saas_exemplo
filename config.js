@@ -3,6 +3,6 @@
 window.APP_CONFIG = {
   supabaseUrl: "https://naclgeaomvjzfibzluay.supabase.co",
   supabaseAnonKey: "sb_publishable_x5EcgQ816hOtHeyOBOmrFg_MK0h3Vw7",
-  professorPin: "1234"
+  professorPin: "1974"
 };
 //NitroV15dtsx
