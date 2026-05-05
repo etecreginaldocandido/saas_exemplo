@@ -1,16 +1,16 @@
 :root {
-  --bg: #f4efe7;
-  --bg-accent: #efe4d2;
-  --surface: rgba(255, 252, 248, 0.82);
-  --surface-strong: #fffaf3;
-  --line: rgba(71, 53, 33, 0.12);
-  --text: #2f2417;
-  --muted: #6d5a46;
-  --accent: #cc6b2c;
-  --accent-strong: #9f4610;
-  --danger: #a12727;
-  --success: #155239;
-  --shadow: 0 24px 60px rgba(83, 49, 12, 0.12);
+  --bg: #02070d;
+  --bg-accent: #061522;
+  --surface: rgba(4, 11, 18, 0.92);
+  --surface-strong: rgba(7, 18, 28, 0.98);
+  --line: rgba(61, 194, 255, 0.5);
+  --text: #eef7ff;
+  --muted: #b5c7d8;
+  --accent: #32c0ff;
+  --accent-strong: #1593f5;
+  --danger: #ff6b81;
+  --success: #52e0a1;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   --radius-xl: 28px;
   --radius-lg: 20px;
   --radius-md: 14px;
@@ -26,7 +26,9 @@ body {
   font-family: "Manrope", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 28%),
+    radial-gradient(circle at 20% 20%, rgba(50, 192, 255, 0.16), transparent 18%),
+    radial-gradient(circle at 80% 15%, rgba(21, 147, 245, 0.12), transparent 20%),
+    radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.04), transparent 35%),
     linear-gradient(135deg, var(--bg) 0%, var(--bg-accent) 100%);
 }
 
@@ -72,7 +74,7 @@ textarea {
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-strong);
+  color: var(--accent);
 }
 
 .hero h1,
@@ -131,8 +133,8 @@ textarea {
 
 .hero-badges span,
 .hint-tag {
-  border: 1px solid rgba(204, 107, 44, 0.18);
-  background: rgba(255, 244, 231, 0.9);
+  border: 1px solid rgba(50, 192, 255, 0.4);
+  background: rgba(11, 28, 42, 0.86);
 }
 
 .status-panel {
@@ -150,12 +152,12 @@ textarea {
 .mode-badge {
   width: fit-content;
   margin: 18px 0;
-  background: #f1e4c8;
-  color: #7c4a10;
+  background: rgba(50, 192, 255, 0.16);
+  color: var(--accent);
 }
 
 .mode-badge.cloud {
-  background: #dff2e5;
+  background: rgba(82, 224, 161, 0.16);
   color: var(--success);
 }
 
@@ -168,8 +170,8 @@ textarea {
 .status-list div {
   padding: 14px 16px;
   border-radius: var(--radius-md);
-  background: rgba(255, 250, 243, 0.92);
-  border: 1px solid rgba(71, 53, 33, 0.08);
+  background: rgba(8, 19, 29, 0.94);
+  border: 1px solid rgba(61, 194, 255, 0.16);
 }
 
 .status-list dt {
@@ -226,7 +228,7 @@ textarea {
 .announcement-form select,
 .toolbar-select {
   width: 100%;
-  border: 1px solid rgba(71, 53, 33, 0.14);
+  border: 1px solid rgba(61, 194, 255, 0.22);
   border-radius: var(--radius-md);
   background: var(--surface-strong);
   padding: 14px 16px;
@@ -237,8 +239,8 @@ textarea {
 .announcement-form textarea:focus,
 .announcement-form select:focus,
 .toolbar-select:focus {
-  outline: 2px solid rgba(204, 107, 44, 0.28);
-  border-color: rgba(204, 107, 44, 0.5);
+  outline: 2px solid rgba(50, 192, 255, 0.28);
+  border-color: rgba(50, 192, 255, 0.72);
 }
 
 .form-row {
@@ -281,19 +283,19 @@ textarea {
 
 .primary-button {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-  color: white;
+  color: #03101a;
 }
 
 .secondary-button {
-  background: rgba(255, 245, 231, 0.96);
+  background: rgba(10, 23, 35, 0.96);
   color: var(--text);
-  border: 1px solid rgba(71, 53, 33, 0.1);
+  border: 1px solid rgba(61, 194, 255, 0.22);
 }
 
 .ghost-button {
   background: transparent;
   color: var(--text);
-  border: 1px solid rgba(71, 53, 33, 0.12);
+  border: 1px solid rgba(61, 194, 255, 0.18);
 }
 
 .ghost-button.danger {
@@ -333,8 +335,8 @@ textarea {
 }
 
 .announcement-item {
-  background: rgba(255, 250, 243, 0.94);
-  border: 1px solid rgba(71, 53, 33, 0.08);
+  background: rgba(8, 19, 29, 0.94);
+  border: 1px solid rgba(61, 194, 255, 0.16);
   border-radius: 18px;
   padding: 18px;
 }
@@ -362,7 +364,7 @@ textarea {
 .teacher-console {
   margin-top: 26px;
   padding-top: 22px;
-  border-top: 1px solid rgba(71, 53, 33, 0.1);
+  border-top: 1px solid rgba(61, 194, 255, 0.16);
 }
 
 .teacher-console-text,
@@ -378,7 +380,7 @@ textarea {
 .empty-state {
   padding: 28px;
   border-radius: 18px;
-  border: 1px dashed rgba(71, 53, 33, 0.18);
+  border: 1px dashed rgba(61, 194, 255, 0.28);
   text-align: center;
   line-height: 1.6;
 }
@@ -400,8 +402,8 @@ textarea {
 .feature-details {
   padding: 18px;
   border-radius: 18px;
-  background: rgba(255, 250, 243, 0.94);
-  border: 1px solid rgba(71, 53, 33, 0.08);
+  background: rgba(8, 19, 29, 0.94);
+  border: 1px solid rgba(61, 194, 255, 0.22);
 }
 
 .integration-box dt,
@@ -435,7 +437,7 @@ textarea {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 18px;
-  background: rgba(71, 53, 33, 0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .feature-caption {
@@ -463,8 +465,8 @@ textarea {
 .stat-card {
   padding: 14px 16px;
   border-radius: 16px;
-  background: rgba(255, 244, 231, 0.78);
-  border: 1px solid rgba(71, 53, 33, 0.08);
+  background: rgba(10, 26, 39, 0.96);
+  border: 1px solid rgba(61, 194, 255, 0.16);
 }
 
 .movie-card {
@@ -477,7 +479,7 @@ textarea {
   aspect-ratio: 2 / 3;
   object-fit: cover;
   border-radius: 14px;
-  background: rgba(71, 53, 33, 0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .movie-title {
